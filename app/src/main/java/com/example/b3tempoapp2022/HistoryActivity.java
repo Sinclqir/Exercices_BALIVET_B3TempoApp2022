@@ -39,6 +39,13 @@ public class HistoryActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_history);
         setContentView(binding.getRoot());
 
+
+        String yearNow = Tools.getNowDate("yyyy");
+        String yearBefore = "";
+        try {
+            yearBefore = String.valueOf(Integer.parseInt(yearNow) - 1);
+        }catch(NumberFormatException e);
+
         // Init recycler view
         binding.tempoHistoryRv.setHasFixedSize(true);
         binding.tempoHistoryRv.setLayoutManager(new LinearLayoutManager(this));
@@ -47,7 +54,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         if (edfApi != null) {
             // Create call to getTempoDaysLeft
-            Call<TempoHistory> call = edfApi.getTempoHistory("2021", "2022");
+            Call<TempoHistory> call = edfApi.getTempoHistory(yearBefore, yearNow);
 
             call.enqueue(new Callback<TempoHistory>() {
                 @Override
