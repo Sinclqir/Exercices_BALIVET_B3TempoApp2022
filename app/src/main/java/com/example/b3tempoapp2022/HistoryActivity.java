@@ -44,7 +44,9 @@ public class HistoryActivity extends AppCompatActivity {
         String yearBefore = "";
         try {
             yearBefore = String.valueOf(Integer.parseInt(yearNow) - 1);
-        }catch(NumberFormatException e);
+        }catch(NumberFormatException e){
+            
+        };
 
         // Init recycler view
         binding.tempoHistoryRv.setHasFixedSize(true);
