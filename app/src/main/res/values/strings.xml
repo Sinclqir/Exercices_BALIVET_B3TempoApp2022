@@ -5,7 +5,8 @@
     <string name="dcv_today_tx">Aujourd\'hui</string>
     <string name="not_available">ND</string>
     <string name="not_set">not set</string>
-    <string name="history_bt">Historique</string>
+    <string name="history_bt">HISTO V1</string>
+    <string name="history_bt2">HISTO V2</string>
     <string name="history_activity_title">Historique Tempo</string>
 
     <string name="channel_name">Alertes Tempo</string>
