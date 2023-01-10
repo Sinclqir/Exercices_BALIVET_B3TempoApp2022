@@ -22,6 +22,7 @@ public class DayColorView extends View {
     private int captionColor = Color.BLACK;
     private float captionTextSize = 0;
     private int dayCircleColor = Color.GRAY;
+    private String captionTextColor;
 
     private Context context;
 
@@ -59,7 +60,9 @@ public class DayColorView extends View {
             }
             captionColor = a.getColor(R.styleable.DayColorView_captionTextColor, captionColor);
             captionTextSize = a.getDimension(R.styleable.DayColorView_captionTextSize, getResources().getDimension(R.dimen.tempo_color_text_size));
+            captionTextSize = a.getDimension(R.styleable.DayColorView_captionTextSize, getResources().getDimension(R.dimen.tempo_color_text_size)-10);
             dayCircleColor = a.getColor(R.styleable.DayColorView_dayCircleColor, ContextCompat.getColor(context, R.color.tempo_undecided_day_bg));
+            captionTextColor = "null";
         } finally {
             a.recycle();
         }
@@ -117,12 +120,24 @@ public class DayColorView extends View {
                 paddingLeft + (contentWidth - mTextWidth) / 2,
                 paddingTop + (contentHeight + mTextHeight) / 2,
                 textPaint);
-    }
+
+        // Draw the captionTextColor.
+        //canvas.drawText(captionTextColor, 10, y, textPaint);
+
+        canvas.drawText(String.valueOf(captionTextColor),
+                paddingLeft + (contentWidth - mTextWidth) / 2,
+                paddingTop + ((contentHeight + mTextHeight) / 2) +100,
+                textPaint);
+}
 
     public void setDayCircleColor(TempoColor color) {
         dayCircleColor = ContextCompat.getColor(context, color.getColorResId());
         setCirclePaint();
         invalidate();
+    }
+
+    public void addColorString(String string) {
+        captionTextColor = string;
     }
 
 }

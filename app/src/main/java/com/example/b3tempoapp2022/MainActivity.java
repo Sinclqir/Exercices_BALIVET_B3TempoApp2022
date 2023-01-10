@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static IEdfApi edfApi;
     ActivityMainBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(LOG_TAG,"onCreate()");
@@ -44,6 +45,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // init views
         binding.historyBt.setOnClickListener(this);
+
+        Button historyBt2 = findViewById(R.id.history_bt2);
+        historyBt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HistoryActivity2.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Create notification channel
         createNotificationChannel();
@@ -112,7 +123,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d(LOG_TAG,"Today color = " + tempoDaysColor.getCouleurJourJ().toString());
                     Log.d(LOG_TAG,"Tomorrow color = " + tempoDaysColor.getCouleurJourJ1().toString());
                     binding.todayDcv.setDayCircleColor(tempoDaysColor.getCouleurJourJ());
+                    binding.todayDcv.addColorString(getString(tempoDaysColor.getCouleurJourJ().getStringResId()));
                     binding.tomorrowDcv.setDayCircleColor(tempoDaysColor.getCouleurJourJ1());
+                    binding.tomorrowDcv.addColorString(getString(tempoDaysColor.getCouleurJourJ1().getStringResId()));
                     //checkColor4Notif(tempoDaysColor.getCouleurJourJ1());
                 } else {
                     Log.w(LOG_TAG, "call to getTempoDaysColor() failed with error code " + response.code());
@@ -196,8 +209,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         intent.setClass(this,HistoryActivity.class);
         startActivity(intent);
     }
-
-
-
-
 }

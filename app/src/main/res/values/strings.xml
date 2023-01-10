@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">B3TempoApp2022</string>
-
     <string name="dcv_tomorrow_tx">Demain</string>
     <string name="dcv_today_tx">Aujourd\'hui</string>
     <string name="not_available">ND</string>
@@ -17,6 +16,16 @@
     <string name="tempo_red_color_text">rouge</string>
     <string name="tempo_white_color_text">blanc</string>
     <string name="tempo_blue_color_text">bleu</string>
+
+    <string name="tpi_date">10/10/2022</string>
+    <string name="tpi_couleur">bleu</string>
+
+
+
+
+
+
+
     <string name="tempo_undecided_color_text">indéterminé</string>
 
 </resources>
